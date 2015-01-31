@@ -17,7 +17,13 @@ TrelloClone.Views.CardForm = Backbone.View.extend({
     var that = this;
     var formData = $(event.currentTarget).serializeJSON();
     that.model.set(formData);
-    that.model.set("list_id", that.model.list.id);
+
+    // Can't get list ID in a proper fashion. Fix this later.
+    var list_id = that.model.list.id ||
+                  (that.model.list.cards().first() && that.model.list.cards().first().get("list_id")) ||
+                  null;
+
+    that.model.set("list_id", list_id);
     that.model.save({}, {
       success: function() {
         that.model.list.cards().push(that.model);

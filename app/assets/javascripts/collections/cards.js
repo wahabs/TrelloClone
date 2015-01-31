@@ -4,17 +4,28 @@ TrelloClone.Collections.Cards = Backbone.Collection.extend({
     this.list = options.list;
   },
 
-  url : function() {
-    return ("api/boards/" + this.collection.list.collection.board.id
-             + "/lists/" + this.collection.list.id
-             + "/cards"
-    )
-  },
+  url: 'api/cards',
 
   model: TrelloClone.Models.Card,
 
   sortBy : function(card) {
     card.get("ord");
+  },
+
+  getOrFetch: function (id) {
+    var card = this.get(id),
+      cards = this;
+    if(!card) {
+      card = new TrelloClone.Models.Card({ id: id });
+      card.fetch({
+        success: function () {
+          cards.add(card);
+        },
+      });
+    } else {
+      card.fetch();
+    }
+    return card;
   }
 
 })

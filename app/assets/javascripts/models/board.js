@@ -8,6 +8,7 @@ TrelloClone.Models.Board = Backbone.Model.extend({
     return this._lists;
   },
 
+
   parse: function(resp) {
     if (resp.lists) {
       this.lists().set(resp.lists, {parse: true});
