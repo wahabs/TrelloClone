@@ -4,7 +4,7 @@ TrelloClone.Views.BoardForm = Backbone.View.extend({
 
   events: {
     "submit" : "createBoard"
-  }
+  },
 
   render : function() {
     var content = this.template();
@@ -13,7 +13,15 @@ TrelloClone.Views.BoardForm = Backbone.View.extend({
   },
 
   createBoard : function(event) {
-    var formData = $(event.currentTarget).serializeJSON()
+    event.preventDefault();
+    var formData = $(event.currentTarget).serializeJSON();
+    var board = new TrelloClone.Models.Board();
+    board.set(formData);
+    board.save({}, {
+      success: function() {
+         Backbone.history.navigate("api/boards/" + board.id, { trigger: true })
+      }
+    });
   }
 
 })

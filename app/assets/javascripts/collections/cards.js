@@ -11,6 +11,10 @@ TrelloClone.Collections.Cards = Backbone.Collection.extend({
     )
   },
 
-  model: TrelloClone.Models.Card
+  model: TrelloClone.Models.Card,
+
+  sortBy : function(card) {
+    card.get("ord");
+  }
 
 })
