@@ -19,10 +19,24 @@
 
 // separate into different files
 
+ul {
+  list-style-type: none;
+}
+
 .lists > li {
   float: left;
   margin: 0px 30px;
 }
+
+button.board-delete {
+  display: inline;
+  opacity: 0;
+}
+
+.board-index-item:hover > button.board-delete {
+  opacity: 100;
+}
+
 
 button.card-delete {
   opacity: 0;
