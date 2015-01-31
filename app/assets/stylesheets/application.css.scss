@@ -23,3 +23,11 @@
   float: left;
   margin: 0px 30px;
 }
+
+button.card-delete {
+  opacity: 0;
+}
+
+div.card_title:hover > button.card-delete {
+  opacity: 100;
+}
