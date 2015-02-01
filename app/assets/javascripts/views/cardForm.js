@@ -1,9 +1,13 @@
 TrelloClone.Views.CardForm = Backbone.View.extend({
   template: JST["card_form"],
   tagName: "form",
-
+  className: "card-form",
   events: {
     "submit" : "createCard"
+  },
+
+  initialize : function(options) {
+    // this.list_id = options.list_id;
   },
 
   render : function() {
@@ -22,7 +26,6 @@ TrelloClone.Views.CardForm = Backbone.View.extend({
     var list_id = that.model.list.id ||
                   (that.model.list.cards().first() && that.model.list.cards().first().get("list_id")) ||
                   null;
-
     that.model.set("list_id", list_id);
     that.model.save({}, {
       success: function() {
