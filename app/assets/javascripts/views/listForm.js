@@ -21,10 +21,11 @@ TrelloClone.Views.ListForm = Backbone.View.extend({
     that.model.set("board_id", that.model.board.id);
     that.model.save({}, {
       success: function() {
-        that.model.board.lists().push(that.model);
+        that.model.board.lists().add(that.model);
         Backbone.history.navigate(
          "api/boards/" + that.model.get("board_id"), { trigger: true }
         )
+        that.model = new TrelloClone.Models.List({}, { board: that.model.board });
       }
     });
   }
