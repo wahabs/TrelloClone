@@ -22,11 +22,9 @@ TrelloClone.Views.CardForm = Backbone.View.extend({
     that.model.save({}, {
       success: function() {
         that.model.list.cards().add(that.model);
-
         Backbone.history.navigate(
          "api/boards/" + that.model.list.get("board_id"), { trigger: true }
         )
-
         that.model = new TrelloClone.Models.Card({}, { list: that.model.list });
       }
     });

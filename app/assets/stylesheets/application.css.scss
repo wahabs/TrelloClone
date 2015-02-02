@@ -43,7 +43,7 @@ button.board-delete {
 }
 
 
-button.card-delete {
+button.card-delete, button.list-delete {
   opacity: 0;
 }
 
@@ -56,5 +56,9 @@ button.card-delete {
 }
 
 div.card_title:hover > button.card-delete {
+  opacity: 100;
+}
+
+div.list-title:hover > button.list-delete {
   opacity: 100;
 }
