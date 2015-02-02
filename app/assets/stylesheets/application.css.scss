@@ -49,10 +49,16 @@ button.card-delete, button.list-delete {
 
 .list-show {
   border: 1px solid black;
+  background-color: #ccc;
+}
+
+.cards {
+  min-height: 10px;
 }
 
 .card-show {
-  border-bottom: 1px solid gray;
+  background: white;
+  border-bottom: 1px solid black;
 }
 
 div.card_title:hover > button.card-delete {
