@@ -19,6 +19,18 @@ TrelloClone.Models.List = Backbone.Model.extend({
       delete resp.cards;
     }
     return resp;
+  },
+
+  cardOrds : function() {
+    return this.cards().pluck("ord");
+  },
+
+  nextOrd : function() {
+    if (Math.max.apply(null, this.cardOrds()) < 0) {
+      return 0;
+    } else {
+      return Math.max.apply(null, this.cardOrds()) + 1;
+    }
   }
 
 })

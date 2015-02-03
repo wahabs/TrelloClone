@@ -19,6 +19,7 @@ TrelloClone.Views.CardForm = Backbone.View.extend({
     that.$("input[type='text']").val("");
     that.model.set(formData);
     that.model.set("list_id", that.model.list.id);
+    that.model.set("ord", that.model.list.nextOrd());
     that.model.save({}, {
       success: function() {
         that.model.list.cards().add(that.model);

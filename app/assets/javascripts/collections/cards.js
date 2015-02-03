@@ -4,13 +4,11 @@ TrelloClone.Collections.Cards = Backbone.Collection.extend({
     this.list = options.list;
   },
 
+  comparator: "ord",
+
   url: 'api/cards',
 
   model: TrelloClone.Models.Card,
-
-  sortBy : function(card) {
-    card.get("ord");
-  },
 
   getOrFetch: function (id) {
     var card = this.get(id),

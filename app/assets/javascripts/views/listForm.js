@@ -19,6 +19,7 @@ TrelloClone.Views.ListForm = Backbone.View.extend({
     this.$('input#title').val('');
     that.model.set(formData);
     that.model.set("board_id", that.model.board.id);
+    that.model.set("ord", that.model.board.nextOrd());
     that.model.save({}, {
       success: function() {
         that.model.board.lists().add(that.model);
